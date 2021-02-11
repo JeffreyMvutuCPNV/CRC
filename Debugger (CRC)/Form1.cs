@@ -35,8 +35,10 @@ namespace Debugger__CRC_
             for (int i = 0; i < data.Length; i++)
             {
                 char c = data[i];
-                if ((c > '0') && (c < '9')) // it's a digit
-                {
+                // the check of the digit excluded 0 and 9 from the digits. 
+                // if ((c > '0') && (c < '9')) // it's a digit
+                if ((c >= '0') && (c <= '9')) // it's a digit
+                    {
                     nbDigits++;
                     crcVal = crcVal + ((int)c - (int)'0');
                     if (crcVal > 100) // We cannot go over 100 because we only have 2 digits in the CRC
