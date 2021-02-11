@@ -17,7 +17,8 @@ namespace Debugger__CRC_
     public partial class frmCRC : Form
     {
         const int initialNbDigits = 18;    // number of digits in the number without the CRC
-        long crcVal = 0; // CRC (cumulative)
+        // #JEFFrey : previous CRC values (of previously entered card numbers) are used to compute new values
+        //long crcVal = 0; // CRC (cumulative)
 
         public frmCRC()
         {
@@ -30,6 +31,7 @@ namespace Debugger__CRC_
             int     nbDigits = 0; // To count the number of digits in the given number
 
             // to browse the data
+            long crcVal = 0; // declaration because otherwise it would reuse previously entered card numbers
             for (int i = 0; i < data.Length; i++)
             {
                 char c = data[i];
