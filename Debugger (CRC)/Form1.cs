@@ -41,7 +41,9 @@ namespace Debugger__CRC_
                     {
                     nbDigits++;
                     crcVal = crcVal + ((int)c - (int)'0');
-                    if (crcVal > 100) // We cannot go over 100 because we only have 2 digits in the CRC
+                    // 100 was considered a valid CRC too, which is wrong. 0-99 is the real range.
+                    //if (crcVal > 100) // We cannot go over 100 because we only have 2 digits in the CRC
+                    if (crcVal >= 100) // We cannot go over 100 because we only have 2 digits in the CRC
                         crcVal = crcVal - 100;
                 }
             }
